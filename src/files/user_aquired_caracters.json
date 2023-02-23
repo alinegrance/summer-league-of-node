@@ -1,0 +1,28 @@
+[
+  {
+    "user_id": 1,
+    "character_id": 1,
+    "level": 1
+  },
+  {
+    "user_id": 1,
+    "character_id": 2,
+    "level": 10
+  },
+  {
+    "user_id": 2,
+    "character_id": 3,
+    "level": 5
+  },
+  {
+    "user_id": 2,
+    "character_id": 4,
+    "level": 9
+  },
+  {
+
+    "user_id": 2,
+    "character_id": 1,
+    "level": 3
+  }
+]
