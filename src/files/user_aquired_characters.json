@@ -1,0 +1,5 @@
+[
+  { "user_id": 1, "character_id": 1, "level": 1 },
+  { "user_id": 1, "character_id": 2, "level": 10 },
+  { "user_id": 3, "character_id": 1, "level": 7 }
+]

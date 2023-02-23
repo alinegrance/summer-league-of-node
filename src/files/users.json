@@ -6,9 +6,15 @@
     "password": "mypassword123"
   },
   {
-    "id": 2,
-    "username": "teenTeemo",
-    "email": "teenteemo@email.com",
-    "password":"otherpassword123"
+    "id": 3,
+    "email": "newplayer@email.com",
+    "username": "newPlayer",
+    "password": "superpassword92"
+  },
+  {
+    "id": 4,
+    "email": "novoplayer@email.com",
+    "username": "novoPlayerBR",
+    "password": "superpasswordBR92"
   }
 ]
