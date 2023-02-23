@@ -1,0 +1,24 @@
+{
+  "name": "summer-league-of-node",
+  "version": "1.0.0",
+  "description": "Uma jornada de exercícios de revisão de node, express e mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alinegrance/summer-league-of-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alinegrance/summer-league-of-node/issues"
+  },
+  "homepage": "https://github.com/alinegrance/summer-league-of-node#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
