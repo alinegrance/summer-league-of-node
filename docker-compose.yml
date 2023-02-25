@@ -36,7 +36,9 @@ services:
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_HOST: db # Nome do service logo abaixo
+      MYSQL_HOST: db # Nome do service logo abaixo 
+      MYSQL_PORT: '3306'
+      MYSQL_DATABASE: 'LeagueOfNode'
       PORT: '3000'
       HOST: league_of_node
     networks:
