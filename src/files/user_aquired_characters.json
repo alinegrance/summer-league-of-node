@@ -1,0 +1,17 @@
+[
+  {
+    "user_id": 2,
+    "character_id": 3,
+    "mastery": 6
+  },
+  {
+    "user_id": 2,
+    "character_id": 4,
+    "mastery": 7
+  },
+  {
+    "user_id": 2,
+    "character_id": 1,
+    "mastery": 3
+  }
+]

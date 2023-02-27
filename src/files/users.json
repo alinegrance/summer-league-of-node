@@ -1,14 +1,26 @@
 [
   {
-    "id": 1,
-    "username": "bigBoss",
-    "email": "bigboss@email.com",
-    "password": "mypassword123"
-  },
-  {
     "id": 2,
     "username": "teenTeemo",
     "email": "teenteemo@email.com",
-    "password":"otherpassword123"
+    "password": "otherpassword123"
+  },
+  {
+    "id": 3,
+    "username": "newUser",
+    "email": "newuser@email.com",
+    "password": "mypassword321"
+  },
+  {
+    "id": 4,
+    "username": "newUser2",
+    "email": "newuser2@email.com",
+    "password": "mypassword3214"
+  },
+  {
+    "id": 5,
+    "username": "newuser90",
+    "email": "email@email.com",
+    "password": "123456"
   }
 ]
