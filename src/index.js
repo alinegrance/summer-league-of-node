@@ -12,34 +12,15 @@ const express = require('express');
 // const tokenGen = require('./utils/random');
 
 const userRouter = require('./routes/user.router');
+const loginRouter = require('./routes/login.router');
 
 const app = express();
 
 app.use(express.json());
 app.use('/user', userRouter);
+app.use('/login', loginRouter);
 
 /// //// ENDPOINTS //////////
-// app.post('/login', validateLoginBody, async (req, res) => {
-//   const { username, password } = req.body;
-//   const users = await readJson('../files/users.json');
-//   const userFound = users.find((user) => user.username === username && user.password === password);
-//   if (!userFound) {
-//     return res.status(NOT_FOUND).send({ message: 'User not found' });
-//   }
-//   const token = tokenGen();
-//   res.status(OK).send({ token });
-// });
-
-// app.post('/user', validateCreateUserBody, validateEmail, async (req, res) => {
-//   const { email, username, password } = req.body;
-//   const users = await readJson('../files/users.json');
-//   const id = users.length + 1;
-//   const newUser = { id, email, username, password };
-//   users.push(newUser);
-//   await writeJSON('../files/users.json', users);
-//   const token = tokenGen();
-//   res.status(201).send({ token });
-// });
 
 // app.get('/user', validateAuth, async (_req, res) => {
 //   const users = await readJson('../files/users.json');

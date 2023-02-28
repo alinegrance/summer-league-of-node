@@ -6,20 +6,20 @@ USE LeagueOfNode;
 
 CREATE TABLE users (
   id INT NOT NULL auto_increment PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR (50) NOT NULL
 ) ENGINE=INNODB;
 
 CREATE TABLE characters (
   id INT NOT NULL auto_increment PRIMARY KEY,
-  name VARCHAR(50) NOT NULL
+  name VARCHAR(50) NOT NULL UNIQUE
 ) ENGINE=INNODB;
 
 CREATE TABLE skins (
   id INT NOT NULL auto_increment PRIMARY KEY,
   character_id INT NOT NULL,
-  name VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL UNIQUE,
   FOREIGN KEY (character_id) REFERENCES characters (id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
@@ -27,7 +27,7 @@ CREATE TABLE skins (
 CREATE TABLE user_aquired_characters (
   user_id INT NOT NULL,
   character_id INT NOT NULL,
-  level INT NOT NULL DEFAULT 1,
+  mastery INT NOT NULL DEFAULT 1,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   FOREIGN KEY (character_id) REFERENCES characters (id) ON DELETE CASCADE
 ) ENGINE=INNODB;

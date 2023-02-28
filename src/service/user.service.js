@@ -5,4 +5,12 @@ const getAll = async () => {
   return users;
 };
 
-module.exports = { getAll };
+const createUser = async (username, email, password) => {
+  const result = await userModel.createUser(username, email, password);
+  if (result.message) {
+    return { type: 'error', message: result.message };
+  }
+  return { type: null, message: 'Created' };
+};
+
+module.exports = { getAll, createUser };
