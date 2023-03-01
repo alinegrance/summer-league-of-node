@@ -19,14 +19,14 @@ INSERT INTO skins (character_id, name) VALUES
   (3, "Siren Cassiopeia"),
   (4, "Astronaut Maokai");
 
-INSERT INTO user_aquired_characters (user_id, character_id, level) VALUES
+INSERT INTO user_acquired_characters (user_id, character_id, mastery) VALUES
   (1, 1, 1),
-  (1, 2, 10),
+  (1, 2, 4),
   (2, 3, 5),
   (3, 1, 7),
   (4, 4, 1);
 
-INSERT INTO user_aquired_skins (user_id, skin_id) VALUES
+INSERT INTO user_acquired_skins (user_id, skin_id) VALUES
   (1, 1),
   (1, 3),
   (2, 4),
