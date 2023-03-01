@@ -24,7 +24,19 @@ const createUser = async (username, email, password) => {
 };
 
 const getUserWithCharacters = async (id) => {
-  const query = ''
-}
+  const query = `SELECT u.username, c.name, uac.mastery
+                 FROM LeagueOfNode.user_acquired_characters AS uac
+                 JOIN LeagueOfNode.users AS u ON u.id = uac.user_id
+                 JOIN LeagueOfNode.characters AS c ON c.id = uac.character_id
+                 WHERE u.id = ?`;
+  const [result] = await connection.execute(query, [id]);
+  // console.log(result);
+  return result;
+};
 
-module.exports = { getAll, getUser, createUser };
+const deleteUser = async (id) => {
+  const query = 'DELETE FROM LeagueOfNode.users WHERE id = ?';
+  await connection.execute(query, [id]);
+};
+
+module.exports = { getAll, getUser, createUser, getUserWithCharacters, deleteUser };
