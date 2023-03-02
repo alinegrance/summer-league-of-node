@@ -24,15 +24,15 @@ CREATE TABLE skins (
 ) ENGINE=INNODB;
 
 
-CREATE TABLE user_aquired_characters (
+CREATE TABLE user_acquired_characters (
   user_id INT NOT NULL,
   character_id INT NOT NULL,
-  level INT NOT NULL DEFAULT 1,
+  mastery INT NOT NULL DEFAULT 1,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   FOREIGN KEY (character_id) REFERENCES characters (id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
-CREATE TABLE user_aquired_skins (
+CREATE TABLE user_acquired_skins (
   user_id INT NOT NULL,
   skin_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
