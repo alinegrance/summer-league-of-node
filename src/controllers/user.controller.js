@@ -47,12 +47,13 @@ const getUserWithCharacters = async (req, res) => {
 };
 
 const addCharacter = async (req, res) => {
-  const { userId } = req.body;
+  const { id: userId } = req.user;
   const { id: characterId } = req.params;
 
-  const { type, message } = await userService.addCharacter(userId, characterId);
-  if (type) {
-    return res.status(NOT_FOUND).send({ message });
+  const response = await userService.addCharacter(userId, characterId);
+  
+  if (response.type) {
+    return res.status(NOT_FOUND).send({ message: "Invalid Character" });
   }
   res.sendStatus(CREATED);
 };
@@ -71,7 +72,7 @@ const {id: userId} = req.user;
 };
 
 const deleteUser = async (req, res) => {
-  const { userId } = req.body;
+  const { id: userId } = req.user;
   await userService.deleteUser(userId);
   res.sendStatus(NO_CONTENT);
 };

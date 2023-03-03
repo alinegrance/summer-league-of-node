@@ -31,11 +31,13 @@ const getUserWithCharacters = async (userId) => {
 };
 
 const addCharacter = async (userId, characterId) => {
-  const response = await userCharacterModel.addCharacter(userId, characterId);
-  if (response.message) {
-    return { type: 'error', message: response.message };
+  try{
+    const response = await UserAcquiredCharacter.create({userId, characterId});
+    return response;
+  } catch(e) {
+    return {type: 'error', message: e.message}
   }
-  return { type: null, message: 'Created' };
+  
 };
 
 const updateMastery = async (userId, characterId) => {
@@ -47,7 +49,9 @@ const updateMastery = async (userId, characterId) => {
 };
 
 const deleteUser = async (userId) => {
-  await userModel.deleteUser(userId);
+  await User.destroy({
+    where: {id: userId}
+  });
 };
 
 module.exports = { 
