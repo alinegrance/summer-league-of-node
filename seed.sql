@@ -21,7 +21,7 @@ INSERT INTO skins (character_id, name) VALUES
 
 INSERT INTO user_acquired_characters (user_id, character_id, mastery) VALUES
   (1, 1, 1),
-  (1, 2, 10),
+  (1, 2, 4),
   (2, 3, 5),
   (3, 1, 7),
   (4, 4, 1);
