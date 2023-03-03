@@ -1,27 +1,32 @@
-const userModel = require('../model/user.model');
-const userCharacterModel = require('../model/userCharacter.model');
-const tokenGen = require('../utils/random');
+const { User, Character, UserAcquiredCharacter } = require('../models');
 
 const login = async (username, password) => {
-  const existUser = await userModel.login(username, password);
-  if (!existUser) {
-    return { message: 'User not found' };
-  }
-  const token = tokenGen();
-  return { token };
+ const user = await User.findOne({where: {username, password}});
+ return user;
 };
 
 const createUser = async (username, email, password) => {
-  const response = await userModel.createUser(username, email, password);
-  if (response.message) {
-    return { type: 'error', message: response.message };
+  try{
+    const newUser = await User.create({username, email, password});
+    return newUser;
+  } catch(e) {
+    return {type: 'error', message: e.message}
   }
-  const token = tokenGen();
-  return { type: null, message: token };
 };
 
+const getById = async (userId) => {
+  const user = await User.findByPk(userId);
+  return user;
+}
+
 const getUserWithCharacters = async (userId) => {
-  const userWithCharacters = await userModel.getUserWithCharacters(userId);
+  const userWithCharacters = await User.findAll({
+    where: {id: userId},
+    attributes:  {exclude: ['password', 'email']},
+    include: {
+      model: Character, as: 'characters', through: {attributes: ['mastery']}
+    }
+  });
   return userWithCharacters;
 };
 
@@ -34,12 +39,11 @@ const addCharacter = async (userId, characterId) => {
 };
 
 const updateMastery = async (userId, characterId) => {
-  const response = await userCharacterModel.updateMastery(userId, characterId);
-  // console.log(response);
-  if (!response) {
-    return { type: 'error', message: 'Character not found' };
-  }
-  return { type: null, message: 'OK' };
+    const [[, response ]] = await UserAcquiredCharacter.increment(
+      {mastery: 1},
+      {where: {userId, characterId}});
+  
+    return response;
 };
 
 const deleteUser = async (userId) => {
@@ -47,4 +51,4 @@ const deleteUser = async (userId) => {
 };
 
 module.exports = { 
-  login, createUser, getUserWithCharacters, addCharacter, updateMastery, deleteUser };
+  login, createUser, getById, getUserWithCharacters, addCharacter, updateMastery, deleteUser };

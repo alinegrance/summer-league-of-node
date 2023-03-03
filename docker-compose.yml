@@ -41,6 +41,7 @@ services:
       MYSQL_DATABASE: 'LeagueOfNode'
       PORT: '3000'
       HOST: league_of_node
+      JWT_SECRET: 'mysecret'
     networks:
       # Conecta esse serviço com a rede que criada
       - league_of_node_net

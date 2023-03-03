@@ -18,16 +18,16 @@ const validateCreateUserBody = (req, res, next) => {
   next();
 };
 
-const validateAuth = async (req, res, next) => {
-  const token = req.header('authorization');
-  if (!token) {
-    return res.sendStatus(UNAUTHORIZED);
-  }
-  next();
-};
+// const validateAuth = async (req, res, next) => {
+//   const token = req.header('authorization');
+//   if (!token) {
+//     return res.sendStatus(UNAUTHORIZED);
+//   }
+//   next();
+// };
 
 module.exports = {
   validateLoginBody, 
   validateCreateUserBody, 
-  validateAuth, 
+  // validateAuth, 
 };
