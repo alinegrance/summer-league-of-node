@@ -1,5 +1,5 @@
-const UserAcquiredCharacterModel = (sequelize, DataTypes) => {
-  const UserAcquiredCharacter = sequelize.define('UserAcquiredCharacter', {
+const UserAcquiredCharacter = (sequelize, DataTypes) => {
+  const userAcquiredCharacter = sequelize.define('UserAcquiredCharacter', {
     userId: {
       type: DataTypes.INTEGER,
       foreignKey: true,
@@ -16,22 +16,22 @@ const UserAcquiredCharacterModel = (sequelize, DataTypes) => {
     underscored: true,
   });
 
-  UserAcquiredCharacter.associate = ({User, Character}) => {
+  userAcquiredCharacter.associate = ({User, Character}) => {
     User.belongsToMany(Character, {
       as: 'characters',
-      through: UserAcquiredCharacter,
-      foreignKey: 'characterId',
-      otherKey: 'userId',
+      through: userAcquiredCharacter,
+      foreignKey: 'userId',
+      otherKey: 'characterId',
     });
     Character.belongsToMany(User, {
       as: 'users',
-      through: UserAcquiredCharacter,
-      foreignKey: 'userId',
-      otherKey: 'characterId',
+      through: userAcquiredCharacter,
+      foreignKey: 'characterId',
+      otherKey: 'userId',
     })
   }
 
-  return UserAcquiredCharacter;
+  return userAcquiredCharacter;
 }
 
-module.exports = UserAcquiredCharacterModel;
+module.exports = UserAcquiredCharacter;

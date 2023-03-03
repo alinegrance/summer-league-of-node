@@ -22,12 +22,15 @@ const createUser = async (username, email, password) => {
 };
 
 const getUserWithCharacters = async (userId) => {
-  const userWithCharacters = await User.findOne({
+  const userWithCharacters = await User.findAll({
     where: {id: userId},
-    include: [
-      {model: Character, as: 'characters', through: {attributes:[]}}
-    ]
+    attributes: {exclude: ['password', 'email']},
+    include: {model: Character, as: 'characters', through: {attributes:['mastery']}}
   })
+  // const userWithCharacters = await UserAcquiredCharacter.findAll({
+  //   where: {userId},
+  //   include: [{model: Character, as: 'characters'}]
+  // })
   return userWithCharacters;
 };
 

@@ -1,14 +1,25 @@
-const CharacterModel = (sequelize, DataTypes) => {
-  const Character = sequelize.define('Character', {
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {*} DataTypes 
+ * @returns 
+ */
+
+const Character = (sequelize, DataTypes) => {
+  const character = sequelize.define('Character', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     name: DataTypes.STRING,
+  },
+  {
+    tableName: 'characters',
+    timestamps: false,
   });
-
-  return Character;
+  
+  return character;
 }
 
-module.exports = CharacterModel;
+module.exports = Character;
