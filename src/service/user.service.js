@@ -1,27 +1,36 @@
-const userModel = require('../model/user.model');
-const userCharacterModel = require('../model/userCharacter.model');
-const tokenGen = require('../utils/random');
+const {User, Character, UserAcquiredCharacter} = require('../models');
 
 const login = async (username, password) => {
-  const existUser = await userModel.login(username, password);
-  if (!existUser) {
-    return { message: 'User not found' };
-  }
-  const token = tokenGen();
-  return { token };
+  const user = await User.findOne({where: {username, password}})
+  return user;
 };
 
+const getById = async (userId) => {
+  const user = await User.findOne({where: {id: userId}});
+  // console.log('>>>>>>>>>>>>>>>>>>>>>');
+  // console.log(user);
+  return user;
+}
+
 const createUser = async (username, email, password) => {
-  const response = await userModel.createUser(username, email, password);
-  if (response.message) {
-    return { type: 'error', message: response.message };
+  try{
+    const newUser = await User.create({username, email, password});
+    return newUser;
+  } catch(e) {
+    return {type: 'error', message:'email or username already registered'}
   }
-  const token = tokenGen();
-  return { type: null, message: token };
 };
 
 const getUserWithCharacters = async (userId) => {
-  const userWithCharacters = await userModel.getUserWithCharacters(userId);
+  const userWithCharacters = await User.findAll({
+    where: {id: userId},
+    attributes: {exclude: ['password', 'email']},
+    include: {model: Character, as: 'characters', through: {attributes:['mastery']}}
+  })
+  // const userWithCharacters = await UserAcquiredCharacter.findAll({
+  //   where: {userId},
+  //   include: [{model: Character, as: 'characters'}]
+  // })
   return userWithCharacters;
 };
 
@@ -47,4 +56,4 @@ const deleteUser = async (userId) => {
 };
 
 module.exports = { 
-  login, createUser, getUserWithCharacters, addCharacter, updateMastery, deleteUser };
+  login, getById, createUser, getUserWithCharacters, addCharacter, updateMastery, deleteUser };
