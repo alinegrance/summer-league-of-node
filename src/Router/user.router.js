@@ -1,17 +1,18 @@
 const express = require('express');
 const userController = require('../controllers/user.controller');
-const { validateCreateUserBody, validateAuth } = require('../utils/middlewares');
+const { validateCreateUserBody } = require('../utils/middlewares');
+const auth = require('../utils/validateJWT');
 
 const router = express.Router();
 
 router.post('/', validateCreateUserBody, userController.createUser);
 
-router.get('/', validateAuth, userController.getUserWithCharacters);
+router.get('/', auth, userController.getUserWithCharacters);
 
-router.post('/character/:id', validateAuth, userController.addCharacter);
+router.post('/character/:id', auth, userController.addCharacter);
 
-router.put('/character/:id', validateAuth, userController.updateMastery);
+router.put('/character/:id', auth, userController.updateMastery);
 
-router.delete('/', validateAuth, userController.deleteUser);
+router.delete('/', auth, userController.deleteUser);
 
 module.exports = router;
