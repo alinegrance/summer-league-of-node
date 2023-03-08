@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { UNAUTHORIZED } = require('./status-codes');
 const userService = require('../service/user.service');
 
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'secret';
 
 const auth = async (req, res, next) => {
   const token = req.header('Authorization');
