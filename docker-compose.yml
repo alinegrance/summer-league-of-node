@@ -34,11 +34,11 @@ services:
       - 9229:9229
     # Configura as variáveis de ambiente dentro do container
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_HOST: db # Nome do service logo abaixo 
-      MYSQL_PORT: '3306'
-      MYSQL_DATABASE: 'LeagueOfNode'
+      MYSQLUSER: root
+      MYSQLPASSWORD: password
+      MYSQLHOST: db # Nome do service logo abaixo 
+      MYSQLPORT: '3306'
+      MYSQLDATABASE: 'LeagueOfNode'
       PORT: '3000'
       HOST: league_of_node
       JWT_SECRET: 'mysecret'
