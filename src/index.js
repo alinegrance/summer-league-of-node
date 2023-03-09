@@ -11,6 +11,6 @@ app.use('/login', loginRouter);
 
 app.use('/user', userRouter);
 
-app.use('/character', characterRouter);
+app.use('/characters', characterRouter);
 
 module.exports = app;
