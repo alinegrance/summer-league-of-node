@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "username": "bigBoss",
-    "email": "bigboss@email.com",
-    "password": "mypassword123"
-  },
-  {
-    "id": 2,
-    "username": "teenTeemo",
-    "email": "teenteemo@email.com",
-    "password":"otherpassword123"
-  }
-]
+[{"id":1,"username":"bigBoss","email":"bigboss@email.com","password":"mypassword123"},{"id":2,"username":"teenTeemo","email":"teenteemo@email.com","password":"otherpassword123"},{"id":3,"email":"bruno@gmail.com","username":"bruno","password":"brunin123"}]
